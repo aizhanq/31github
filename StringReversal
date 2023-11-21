@@ -1,0 +1,13 @@
+   //String reversal algorithm
+
+            Console.Write("String reversal algorithm \n Please enter text: ");
+            string str = Console.ReadLine();
+            string ReversedStr = "";
+
+            for (int i = str.Length - 1; i >= 0; i--)
+            {
+                ReversedStr += str[i];
+            }
+
+            Console.Write("Reversal string: " + ReversedStr);
+            Console.ReadKey();
