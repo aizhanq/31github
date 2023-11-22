@@ -1,0 +1,17 @@
+public class Solution
+{
+    public int[] FindDiagonalOrder(IList<IList<int>> nums)
+    {
+        var res = new SortedSet<(int Weight, int Row, int Value)>();
+
+        for (int row = nums.Count - 1; row >= 0; row--)
+        {
+            for (int index = 0; index < nums[row].Count; index++)
+            {
+                res.Add((row + index, nums.Count - row, nums[row][index]));
+            }
+        }
+
+        return res.Select(x => x.Value).ToArray();
+    }
+}
