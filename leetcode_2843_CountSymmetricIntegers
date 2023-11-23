@@ -1,0 +1,23 @@
+public class Solution {
+    public int CountSymmetricIntegers(int low, int high) {
+        int res = 0;
+        for(int i = low; i <= high; i++){
+            string num = i.ToString();
+            if(num.Length % 2 == 0){
+                int sum1 = 0;
+                int sum2 = 0;
+                int j = 0;
+                while(j < num.Length/2){
+                    sum1 += Convert.ToInt32(num[j]);
+                    j++;
+                }
+                while(j < num.Length){
+                     sum2 += Convert.ToInt32(num[j]);
+                    j++;
+                }
+                if(sum1 == sum2) res++;
+            }
+        }
+        return res;
+    }
+}
