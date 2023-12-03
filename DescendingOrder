@@ -1,0 +1,22 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+public static class Kata
+{
+  public static int DescendingOrder(int num)
+  {
+    var l = new List<int>();
+    for(; num != 0; num /= 10) l.Add(num % 10);
+    l.Sort();
+    
+    int res = 0;
+    int mult = 1;
+    for(int i = 0; i < l.Count; i++){
+      res += l[i] * mult;
+      mult *= 10;
+    }
+    
+    return res;
+  }
+}
