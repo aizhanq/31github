@@ -1,0 +1,22 @@
+function deleteEmployee(employeeId) {
+    // Подтверждение перед удалением сотрудника
+    const confirmDelete = confirm("Вы уверены, что хотите удалить сотрудника?");
+
+    if (confirmDelete) {
+        fetch(`/api/Employee/${employeeId}`, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    alert("Нельзя удалить сотрудника, так как он является менеджером проекта.");
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(() => {
+                //Если удаление прошло успешно, обновляем список сотрудников
+                updateEmployeesList();
+            })
+            .catch(error => console.error('Error:', error));
+    }
+}
